@@ -1,0 +1,18 @@
+{
+  "name": "postgres-sink-order-placed",
+  "config": {
+    "connector.class":       "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "tasks.max":             "1",
+    "topics":                "order-placed",
+    "connection.url":        "jdbc:postgresql://postgres:5432/orders?user=demo&password=demo",
+    "auto.create":           "true",
+    "auto.evolve":           "true",
+    "insert.mode":           "upsert",
+    "pk.mode":               "record_key",
+    "pk.fields":             "orderId",
+    "table.name.format":     "${topic}",
+    "transforms":            "dropItems",
+    "transforms.dropItems.type":      "org.apache.kafka.connect.transforms.ReplaceField$Value",
+    "transforms.dropItems.blacklist": "items"
+  }
+}

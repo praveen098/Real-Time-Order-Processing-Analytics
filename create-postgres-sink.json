@@ -1,0 +1,29 @@
+{
+  "name": "postgres-sink-order-placed-avro",
+  "config": {
+    "connector.class":                      "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "tasks.max":                            "1",
+    "topics":                               "order-placed",
+    "connection.url":                       "jdbc:postgresql://postgres:5432/orders?user=demo&password=demo",
+    "auto.create":                          "true",
+    "auto.evolve":                          "true",
+    "insert.mode":                          "insert",
+    "pk.mode":                              "none",
+    "pk.fields":                            "orderId",
+    "key.converter":                        "org.apache.kafka.connect.storage.StringConverter",
+    "key.converter.schemas.enable":         "false",
+    "value.converter":                      "io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url":  "http://schema-registry:8081",
+    "value.converter.schemas.enable":       "true",
+    "consumer.override.auto.offset.reset":  "latest",
+
+    "transforms":                           "RouteTable,dropItems",
+    "transforms.RouteTable.type":           "org.apache.kafka.connect.transforms.RegexRouter",
+    "transforms.RouteTable.regex":          "-",
+    "transforms.RouteTable.replacement":    "_",
+    "transforms.dropItems.type":            "org.apache.kafka.connect.transforms.ReplaceField$Value",
+    "transforms.dropItems.blacklist":       "items",
+
+    "table.name.format":                    "order_placed"
+  }
+}

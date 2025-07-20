@@ -1,0 +1,18 @@
+{
+  "index_patterns": ["order-placed*"],
+  "settings": {
+    "number_of_shards":   1,
+    "number_of_replicas": 0
+  },
+  "mappings": {
+    "properties": {
+      "orderId":    { "type": "long"    },
+      "customer":   { "type": "keyword" },
+      "amount":     { "type": "double"  },
+      "@timestamp": {
+        "type":   "date",
+        "format": "strict_date_optional_time||epoch_millis"
+      }
+    }
+  }
+}

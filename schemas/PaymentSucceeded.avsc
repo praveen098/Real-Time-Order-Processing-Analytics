@@ -1,0 +1,15 @@
+{
+  "namespace": "com.yourcompany.payment",
+  "type": "record",
+  "name": "PaymentSucceeded",
+  "fields": [
+    { "name": "paymentId",       "type": "string" },
+    { "name": "orderId",         "type": "string" },
+    { "name": "customerId",      "type": "string" },
+    { "name": "amount",          "type": "double" },
+    {
+      "name": "paymentTimestamp",
+      "type": { "type": "long", "logicalType": "timestamp-millis" }
+    }
+  ]
+}

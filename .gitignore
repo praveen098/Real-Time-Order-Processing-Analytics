@@ -1,0 +1,14 @@
+# Java / Maven
+**/target/
+*.jar
+
+# IDEA
+.idea/
+
+# Node
+node_modules/
+.next/
+
+# OS / Editor
+*.log
+*.swp

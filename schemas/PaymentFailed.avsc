@@ -1,0 +1,15 @@
+{
+  "namespace": "com.yourcompany.payment",
+  "type": "record",
+  "name": "PaymentFailed",
+  "fields": [
+    { "name": "paymentId",       "type": "string" },
+    { "name": "orderId",         "type": "string" },
+    { "name": "customerId",      "type": "string" },
+    { "name": "failureReason",   "type": "string" },
+    {
+      "name": "failureTimestamp",
+      "type": { "type": "long", "logicalType": "timestamp-millis" }
+    }
+  ]
+}

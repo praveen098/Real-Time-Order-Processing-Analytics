@@ -1,0 +1,3 @@
+{
+  "schema": "{\n  \"namespace\": \"com.yourcompany.payment\",\n  \"type\": \"record\",\n  \"name\": \"PaymentFailed\",\n  \"fields\": [\n    { \"name\": \"paymentId\",       \"type\": \"string\" },\n    { \"name\": \"orderId\",         \"type\": \"string\" },\n    { \"name\": \"customerId\",      \"type\": \"string\" },\n    { \"name\": \"failureReason\",   \"type\": \"string\" },\n    {\n      \"name\": \"failureTimestamp\",\n      \"type\": { \"type\": \"long\", \"logicalType\": \"timestamp-millis\" }\n    }\n  ]\n}\n"
+}
